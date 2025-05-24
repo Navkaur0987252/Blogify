@@ -92,7 +92,7 @@ This page displays the details of an individual blog post, including the title, 
 Create a `.env` file in the project root directory and add the following variables (replace with your actual values):
 
   
-    MONGODB_URI=mongodb://localhost:27017/<your-database-name>
+    MONGODB_URI=mongodb://localhost:27017/
     JWT_SECRET=<your-jwt-secret>
     GOOGLE_CLIENT_ID=<your-google-client-id>
     GOOGLE_CLIENT_SECRET=<your-google-client-secret>
