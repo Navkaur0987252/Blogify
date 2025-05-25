@@ -6,6 +6,12 @@
    "use": "@vercel/node",
    "config": { "includeFiles": ["dist/**"] }
   }
+  {
+  "build": {
+    "outputDirectory": "dist"
+  }
+}
+
  ],
  "routes": [
   {
