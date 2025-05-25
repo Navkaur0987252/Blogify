@@ -1,29 +1,37 @@
 import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 export default function CallToAction() {
   return (
-    <div className="flex flex-col sm:flex-row p-3 border border-teal-500 justify-center items-center rounded-tl-3xl rounded-br-3xl text-center">
-      <div className="flex-1 justify-center flex flex-col">
-        <h2 className="text-2xl">Want to learn more about JavaScript?</h2>
-        <p className="text-gray-500 my-2">
-          Checkout these resources with multiple JavaScript Projects
+    <section className="w-full bg-gradient-to-br from-blue-200 via-purple-100 to-pink-100 dark:from-gray-800 dark:via-gray-900 dark:to-black py-16 rounded-3xl shadow-lg flex flex-col md:flex-row items-center justify-between my-12 transition-colors duration-500">
+      <div className="flex-1 flex flex-col items-center md:items-start px-8">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow">
+          Start Sharing Your Knowledge
+        </h2>
+        <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-xl">
+          Join a vibrant community of developers and creators. Write tutorials, share
+          your experiences, and help others grow. Your next big idea could inspire
+          someone today!
         </p>
-        <Button
-          gradientDuoTone="purpleToPink"
-          className="rounded-tl-xl rounded-bl-none"
-        >
-          <a
-            href="https://www.100jsprojects.com"
-            target="_blank"
-            rel="noopener noreferrer"
+        <Link to={'/create-post'}>
+          <Button
+            gradientDuoTone="purpleToPink"
+            className="rounded-full px-10 py-3 text-lg font-semibold shadow-lg opacity-80 cursor-not-allowed"
           >
-            View Projects
-          </a>
-        </Button>
+            Start Blogging
+          </Button>
+        </Link>
+        <span className="text-xs text-gray-500 dark:text-gray-400 mt-3">
+          
+        </span>
       </div>
-      <div className="p-7 flex-1">
-        <img src="https://bairesdev.mo.cloudinary.net/blog/2023/08/What-Is-JavaScript-Used-For.jpg" />
+      <div className="flex-1 flex justify-center items-center p-8">
+        <img
+          src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80"
+          alt="Blogging illustration"
+          className="rounded-3xl shadow-2xl w-full max-w-lg h-80 object-cover border-4 border-indigo-200 dark:border-gray-700"
+        />
       </div>
-    </div>
+    </section>
   );
 }

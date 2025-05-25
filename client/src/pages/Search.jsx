@@ -70,7 +70,7 @@ export default function Search() {
       e.preventDefault();
       const urlParams = new URLSearchParams(location.search);
       urlParams.set('searchTerm', sidebarData.searchTerm);
-      urlParams.set('sort', sidebarData.sort);
+      urlParams.set('sort', sidebarData.sort); // Ensure this is correctly set
       urlParams.set('category', sidebarData.category);
       const searchQuery = urlParams.toString();
       navigate(`/search?${searchQuery}`);
@@ -167,3 +167,6 @@ export default function Search() {
       </div>
     );
 }
+
+
+

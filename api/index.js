@@ -7,19 +7,28 @@ import postRoutes from './routes/post.route.js';
 import commentRoutes from './routes/comment.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import cors from 'cors';
+import uploadRoute from './routes/upload.js';
 
-dotenv.config();
+dotenv.config(); // Ensure environment variables are loaded
 
-mongoose
-  .connect(process.env.MONGO)
-  .then(() => {console.log('MongoDb is connected');})
+const app = express(); // Initialize the app before using it
+
+// Correctly apply CORS middleware
+app.use(cors({
+  origin: true,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => { console.log('MongoDb is connected'); })
   .catch((err) => {
-      console.log(err);
-});
+    console.log(err);
+  });
 
 const __dirname = path.resolve();
-
-const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
@@ -31,13 +40,16 @@ app.listen(3000, () => {
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/post', postRoutes);
-app.use("/api/comment", commentRoutes);
+app.use('/api/comment', commentRoutes);
 
 app.use(express.static(path.join(__dirname, '/client/dist')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
+
+app.use('/api/upload', uploadRoute);
+
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
